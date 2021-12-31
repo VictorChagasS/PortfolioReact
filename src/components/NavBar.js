@@ -1,44 +1,38 @@
 import React from 'react'
-import logo from '../../../images/logoIcon.png'
+import logo from '../images/logoIcon.png'
 import styled from 'styled-components'
 import {HiMenu} from "react-icons/hi"
 import {motion} from 'framer-motion'
 import { useState } from 'react'
 
-export default function NavBar() {
+export default function NavBar(props) {
         const [open,setOpen] = useState(false);
         const [active, setActive] = useState(1);
-
-        const navItems = [
-            {id:1, text:"Home", url:"#main",delay:0.10},
-            {id:2, text:"Sobre", url:"#about",delay:0.15},
-            {id:3, text:"Habilidades",url:"#skills",delay:0.20},
-            {id:4, text:"Projetos",url:"#projects",delay:0.25}
-        ]
-
+        
+        const navItems = props.item
+    
+        console.log(props.item)
         const closeMenu = () => setOpen(false)
 
         const setAndCloseMenu = (id) => {
             closeMenu()
             setActive(id)
         }
-        const animationFrom = {opacity:0, x: 200}
-        const animationTo = {opacity: 1, x : 0 }
+        const closedMenu = {opacity:0, x: 200}
+        const openMenu = {opacity: 1, x : 0 }
         const variants = {
-            animationTo,
-            animationFrom
-            
-        }
+            openMenu,
+            closedMenu }
         const logoAnimationFrom = {opacity:0,x:-20}
         return (
             <Header className='active'>
-                <Logo initial={logoAnimationFrom} animate={animationTo} transition={{delay:0.20}}>
+                <Logo initial={logoAnimationFrom} animate={openMenu} transition={{delay:0.20}}>
                     <img src={logo} width={35} alt="logo"/>
                     <Text>Victor Chagas</Text>
                 </Logo>
 
                 <Menu>
-                        <ItensMenu initial={animationFrom} animate={animationTo} transition={{delay:0.20}}>
+                        <ItensMenu initial={closedMenu} animate={openMenu} transition={{delay:0.20}}>
                         {navItems.map((val) => (
                           <Item onClick={()=>setActive(val.id)}><Link href={val.url} className={active === val.id ? "active" : "inactive"}>{val.text}</Link></Item>                          
                         ))}
@@ -47,12 +41,12 @@ export default function NavBar() {
 
                 <MenuBtn size={40} onClick={()=>setOpen(!open)}/>  
 
-                <ResponsiveMenu animate={open ? "animationTo" : "animationFrom"} variants={variants}>
+                <ResponsiveMenu  initial = {closedMenu} animate={open ? "openMenu" : "closedMenu"} variants={variants}>
                     {navItems.map((val) => (
                         <ResponsiveItem onClick={() => setAndCloseMenu(val.id)} 
                                         animate={open ? "animationTo" : "animationFrom"}
                                         variants={variants} transition={{delay:val.delay}}> 
-                                        <LinkResp href={val.url} className={active === val.id ? "active" : "inactive"}>{val.text}</LinkResp>
+                                        <LinkResp href={val.url}><SpanText className={active === val.id ? "active" : "inactive"}>{val.text}</SpanText></LinkResp>
                         </ResponsiveItem>
                     ))}
                 </ResponsiveMenu>
@@ -65,6 +59,7 @@ export default function NavBar() {
 
 export const Header = styled.header`
 background-color:#FFF;
+z-index:999;
 top:0;
 position:fixed;
 right:0;
@@ -121,6 +116,14 @@ const Item = styled.li`
 
 `
 
+const SpanText = styled.span`
+display:inline-block;
+.active {
+    padding:0px 0.3vh 0.3vh 0.3vh;
+    border-bottom: 2px solid #14d9b8;
+}
+`
+
 export const ResponsiveMenu = styled(motion.ul)`
     position: fixed;
     display:flex;
@@ -151,6 +154,7 @@ export const ResponsiveItem =  styled(motion.li)`
 
 export const LinkResp = styled.a`
     color:#FFF;
+    display:flex;
 `
 
 export const MenuBtn = styled(HiMenu)`

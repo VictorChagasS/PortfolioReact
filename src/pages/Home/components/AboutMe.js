@@ -7,7 +7,7 @@ export default class AboutMe extends Component {
             <Content >
                         <Title id='about'>Sobre mim</Title>
                         <Container>
-                            <Image><img src={AboutMeImg} alt="aboutme" width={300}/></Image>
+                            <Image><img src={AboutMeImg} alt="aboutme" width={"300vh"}/></Image>
                             <Right>
                             <Subtitle>Sou Victor, técnico em redes e programador</Subtitle>
                             <Text>Possuo formação de nível técnico em Redes de Computadores pelo Instituto Federal de Sergipe (2018-2021). Sou atuante na área de desenvolvimento de aplicativos pelo grupo de pesquisa GRUFEE onde houve a criação do aplicativo L2 (2019), já atuei em projetos de extensão como PIBIC em desenvolvimento de sites e aplicações (2019). Atualmente sou estudante de Engenharia de Computação na Universidade Federal de Sergipe(2021)</Text>
@@ -25,7 +25,11 @@ export const Content = styled.div`
 `
 
 export const Container = styled.div`
-    display:flex;`
+    display:flex;
+    @media (max-width: 1020px) {
+        flex-direction:column;
+    }
+    `
 export const Title = styled.h2`
     text-align:center;
 `
@@ -42,4 +46,11 @@ export const Image = styled.div`
     border-radius:10px;
     margin-right:3vh;
     padding:3px 6px;
+    justify-self:center;
+
+    @media (max-width: 1020px) {
+        display:flex;
+        align-self:center;
+        margin:0;
+    }
 `

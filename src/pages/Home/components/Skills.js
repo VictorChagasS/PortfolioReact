@@ -65,5 +65,10 @@ export const Image = styled.div`
     border-radius:10px;
     margin-left:3vh;
     padding:3px 6px;
-    align-self:center;s
+    align-self:center;
+
+    @media (max-width: 1020px) {
+       display:none;
+    }
+
 `

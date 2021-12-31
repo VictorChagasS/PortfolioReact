@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Icons from '../../../components/Icons'
+import Icons from './Icons'
 import styled from 'styled-components'
 
 export default class Footer extends Component {

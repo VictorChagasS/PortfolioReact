@@ -1,18 +1,28 @@
-import React, { Component } from 'react'
+import React, { Component,useState } from 'react'
 import styled from 'styled-components'
 import principal from '../../../images/principalSVG.png'
 import Icons from '../../../components/Icons'
 import {motion} from 'framer-motion'
 
-export default class Main extends Component {
-    render() {
+export default function Main() {
+
         const animationFrom = {opacity:0, y: -100}
         const animationTo = {opacity: 1, y : 0 }
+
+        const rotateFrom = {rotate:0 }
+        const rotateTo = {rotate: 360}
+        
+        const [rotate,setRotate] = useState(false);
+        console.log(rotate)
+        const variants = {
+            rotateTo,
+            rotateFrom }
+
         return (
         
             <Section id='main' initial={animationFrom} animate={animationTo} transition={{delay:0.10}}> 
                 <Container>
-                        <ContainerImage>
+                        <ContainerImage onClick={()=>setRotate(!rotate)} animate={rotate ? "rotateTo" : "rotateFrom"} variants={variants}>
                             <img src={principal} alt="principal"/>
                         </ContainerImage>
                         <TextDiv>
@@ -24,7 +34,6 @@ export default class Main extends Component {
             </Section>
         )
     }
-}
 
 export const Container = styled.div`
     display:flex;
@@ -39,7 +48,7 @@ export const Section = styled(motion.section)`
     align-itens:center;
     justify-content:center;
 `
-export const ContainerImage = styled.div`
+export const ContainerImage = styled(motion.div)`
     padding: 5vh;
     border-radius:180px;
     border: 2px solid #14d9b8;
