@@ -6,6 +6,7 @@ import Projects from './pages/Projects'
 export default class App extends Component {
   render() {
     const url = process.env.PUBLIC_URL
+    console.log(url)
     return (
       <BrowserRouter>
         <Routes>
