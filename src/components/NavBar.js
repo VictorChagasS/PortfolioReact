@@ -5,6 +5,7 @@ import {HiMenu} from "react-icons/hi"
 import {motion} from 'framer-motion'
 import { useState } from 'react'
 
+
 export default function NavBar(props) {
         const [open,setOpen] = useState(false);
         const [active, setActive] = useState(1);

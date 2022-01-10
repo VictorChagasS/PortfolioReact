@@ -6,9 +6,9 @@ export default class Icons extends Component {
     render() {
         return (
                     <IconsFlex>
-                        <Link color={this.props.color} href='/#'><FaWhatsapp fontSize={26}/> </Link> 
-                        <Link color={this.props.color} href='/#'><FaGithub fontSize={26}/> </Link> 
-                        <Link color={this.props.color} href='/#'><FaLinkedinIn fontSize={26}/> </Link> 
+                        <Link color={this.props.color} href="https://api.whatsapp.com/send?phone=5579996413041&text=Entre%20em%20contato"><FaWhatsapp fontSize={26}/> </Link> 
+                        <Link color={this.props.color} href='https://github.com/VictorChagasS'><FaGithub fontSize={26}/> </Link> 
+                        <Link color={this.props.color} href='https://www.linkedin.com/in/victor-santos-chagas-439a9621a'><FaLinkedinIn fontSize={26}/> </Link> 
                         <Link color={this.props.color} href='/#'><FaInstagram fontSize={26}/> </Link> 
                     </IconsFlex>
         )
