@@ -7,7 +7,7 @@ export default class Project1 extends Component {
     render() {
         return (
                 <Align>
-                <Title>Agendamento para psicólogos</Title>
+                <Title id='begin'>Agendamento para psicólogos</Title>
                 <Container>
                 <Right>
                     <Subtitle>Um projeto criado para o Instituto Federal de Sergipe para atender demandas dos psicólogos</Subtitle>

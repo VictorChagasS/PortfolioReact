@@ -11,13 +11,12 @@ class Home extends Component {
     render() {
         const animationFrom = {opacity:0, y: -100}
         const animationTo = {opacity: 1, y : 0 }
-        const url = process.env.PUBLIC_URL
         return (
      <>
            <NavBar  item = {[{id:1, text:"Home", url:"#main",delay:0.10},
                             {id:2, text:"Sobre", url:"#about",delay:0.15},
                             {id:3, text:"Habilidades",url:"#skills",delay:0.20},
-                            {id:4, text:"Projetos",url: `${url}/projects`}]}/>
+                            {id:4, text:"Projetos",url: `projects/#begin`}]}/>
            <Container  initial={animationFrom} animate={animationTo} transition={{delay:0.10}}>
                 <Main></Main>
                 <AboutMe></AboutMe>

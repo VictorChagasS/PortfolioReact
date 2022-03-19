@@ -10,12 +10,11 @@ import styled from 'styled-components'
 export default class index extends Component {
     
     render() {
-        const url = process.env.PUBLIC_URL
         const animationFrom = {opacity:0, y: -100}
         const animationTo = {opacity: 1, y : 0 }
         return (
             <>
-            <NavBar item={[{id:1, text:"Voltar", url:`${url}`,delay:0.10}]}/>
+            <NavBar item={[{id:1, text:"Voltar", url:`/#main`,delay:0.10}]}/>
             <Container initial={animationFrom} animate={animationTo} transition={{delay:0.10}}>
                 <Project1/>
                 <Project2/>

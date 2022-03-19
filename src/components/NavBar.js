@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import {HiMenu} from "react-icons/hi"
 import {motion} from 'framer-motion'
 import { useState } from 'react'
-
+import { HashLink } from 'react-router-hash-link'
 
 export default function NavBar(props) {
         const [open,setOpen] = useState(false);
@@ -35,7 +35,7 @@ export default function NavBar(props) {
                 <Menu>
                         <ItensMenu initial={closedMenu} animate={openMenu} transition={{delay:0.20}}>
                         {navItems.map((val) => (
-                          <Item onClick={()=>setActive(val.id)}><Link href={val.url} className={active === val.id ? "active" : "inactive"}>{val.text}</Link></Item>                          
+                          <Item onClick={()=>setActive(val.id)}><Link to={val.url} className={active === val.id ? "active" : "inactive"}>{val.text}</Link></Item>                          
                         ))}
                         </ItensMenu>
                 </Menu>
@@ -47,7 +47,7 @@ export default function NavBar(props) {
                         <ResponsiveItem onClick={() => setAndCloseMenu(val.id)} 
                                         animate={open ? "animationTo" : "animationFrom"}
                                         variants={variants} transition={{delay:val.delay}}> 
-                                        <LinkResp href={val.url}><SpanText className={active === val.id ? "active" : "inactive"}>{val.text}</SpanText></LinkResp>
+                                        <LinkResp to={val.url}><SpanText className={active === val.id ? "active" : "inactive"}>{val.text}</SpanText></LinkResp>
                         </ResponsiveItem>
                     ))}
                 </ResponsiveMenu>
@@ -101,7 +101,7 @@ list-style-type: none;
     display:none;
 }
 `
-export const Link = styled.a`
+export const Link = styled(HashLink)`
 color:#000;
 margin-right:4vh;
 font-weight:600;
@@ -153,7 +153,7 @@ export const ResponsiveItem =  styled(motion.li)`
 
 `
 
-export const LinkResp = styled.a`
+export const LinkResp = styled(HashLink)`
     color:#FFF;
     display:flex;
 `

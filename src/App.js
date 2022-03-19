@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import {Route, Routes, HashRouter } from 'react-router-dom'
 
 
 
@@ -7,16 +7,17 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 export default class App extends Component {
   render() {
-    const url = process.env.PUBLIC_URL
-    console.log(url)
+    
     return (
-      <BrowserRouter>
+      <HashRouter hashType="noslash">
         <Routes>
-            <Route path={url} element={<Home/>}/>
-            <Route path={url+'/projects'} element={<Projects/>}/>
-            <Route path ="*" element={<h1>404</h1>}/>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/projects' element={<Projects/>}/> 
+      
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }
+
+
